@@ -1,9 +1,8 @@
 import React from 'react'
 
 const VideoCard = ({video}) => {
-  console.log("In card:: ", video);
   const {snippet, statistics} = video;
-  const {channelTitle, title, thumbnails, publishedAt} = snippet;
+  const {channelTitle, title, thumbnails} = snippet;
   const {viewCount} = statistics;
   return (
     <div className='p-2 m-2 w-72 shadow-lg'>
@@ -12,8 +11,16 @@ const VideoCard = ({video}) => {
         <li className='font-bold py-2'>{title}</li>
         <li>{channelTitle}</li>
         <li>{viewCount} views</li>
-        {/* <li>{publishedAt}</li> */}
       </ul>
+    </div>
+  )
+}
+
+export const AdVideoCard = ({video}) => {
+  return (
+    <div className='border border-slate-400 p-2 m-2'>
+      <VideoCard video={video}/>
+      <p className='font-bold text-slate-400 text-xs'>Ad - {video.snippet.channelTitle}</p>
     </div>
   )
 }
